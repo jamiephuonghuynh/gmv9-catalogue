@@ -30,28 +30,27 @@
 <script>
 function chunk(a,n){let o=[];for(let i=0;i<a.length;i+=n)o.push(a.slice(i,i+n));return o}
 function table(items,idx){
-const pick=(x,...keys)=>keys.map(k=>x[k]).find(v=>v!==undefined&&v!==null&&v!=="")||'—';
-const c=(...keys)=>items.map(x=>`<td>${pick(x,...keys)}</td>`).join('');
+const c=k=>items.map(x=>`<td>${x[k]||'—'}</td>`).join('');
 return `<div class="table-title">Combined Modules — Block ${idx+1}</div><div class="table-wrap"><table class="manual-spec"><tbody>
 <tr><th colspan="3">Model (combined unit)</th>${items.map(x=>`<td class="model">${x.model}</td>`).join('')}</tr>
 <tr><td class="label" colspan="2">Capacity range</td><td class="unit">HP</td>${c('hp')}</tr>
-<tr><td class="label" colspan="2">Standard Combination</td><td class="unit">HP</td>${c('combo','model_combination')}</tr>
-<tr><td class="blank" colspan="3">Model (single unit)</td>${items.map(x=>`<td class="single-model">${pick(x,'single','model_single').replaceAll('+','+<br>')}</td>`).join('')}</tr>
-<tr><td class="group" rowspan="3">Cooling<br>at 35°C<span class="small">(1)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${c('cool35_kw','cooling_35_capacity_kw')}</tr><tr><td class="unit">Btu/h</td>${c('cool35_btuh','cooling_35_capacity_btuh')}</tr><tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${c('cool35_input','cooling_35_power_input_kw')}</tr>
-<tr><td class="group" rowspan="3">Cooling<br>at 46°C<span class="small">(2)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${c('cool46_kw','cooling_46_capacity_kw')}</tr><tr><td class="unit">Btu/h</td>${c('cool46_btuh','cooling_46_capacity_btuh')}</tr><tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${c('cool46_input','cooling_46_power_input_kw')}</tr>
-<tr><td class="group" rowspan="3">Heating<span class="small">(3)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${c('heat_kw','heating_capacity_kw')}</tr><tr><td class="unit">Btu/h</td>${c('heat_btuh','heating_capacity_btuh')}</tr><tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${c('heat_input','heating_power_input_kw')}</tr>
-<tr><td class="label" colspan="2">Maximum power input</td><td class="unit">kW</td>${c('max_input','maximum_power_input_kw')}</tr>
-<tr><td class="label" colspan="2">Minimum circuit current</td><td class="unit">A</td>${c('mca','minimum_circuit_current_a')}</tr>
-<tr><td class="label" colspan="2">Maximum fuse current</td><td class="unit">A</td>${c('fuse','maximum_fuse_current_a')}</tr>
+<tr><td class="label" colspan="2">Standard Combination</td><td class="unit">HP</td>${c('combo')}</tr>
+<tr><td class="blank" colspan="3">Model (single unit)</td>${items.map(x=>`<td class="single-model">${(x.single||'—').replaceAll('+','+<br>')}</td>`).join('')}</tr>
+<tr><td class="group" rowspan="3">Cooling<br>at 35°C<span class="small">(1)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${c('cool35_kw')}</tr><tr><td class="unit">Btu/h</td>${c('cool35_btuh')}</tr><tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${c('cool35_input')}</tr>
+<tr><td class="group" rowspan="3">Cooling<br>at 46°C<span class="small">(2)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${c('cool46_kw')}</tr><tr><td class="unit">Btu/h</td>${c('cool46_btuh')}</tr><tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${c('cool46_input')}</tr>
+<tr><td class="group" rowspan="3">Heating<span class="small">(3)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${c('heat_kw')}</tr><tr><td class="unit">Btu/h</td>${c('heat_btuh')}</tr><tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${c('heat_input')}</tr>
+<tr><td class="label" colspan="2">Maximum power input</td><td class="unit">kW</td>${c('max_input')}</tr>
+<tr><td class="label" colspan="2">Minimum circuit current</td><td class="unit">A</td>${c('mca')}</tr>
+<tr><td class="label" colspan="2">Maximum fuse current</td><td class="unit">A</td>${c('fuse')}</tr>
 <tr><td class="label" colspan="2">Power supply</td><td class="unit">—</td>${items.map(()=>'<td>380-415V 3N~<br>50/60Hz</td>').join('')}</tr>
-<tr><td class="label" colspan="2">Air volume</td><td class="unit">m³/h</td>${c('air','air_volume_m3h')}</tr>
+<tr><td class="label" colspan="2">Air volume</td><td class="unit">m³/h</td>${c('air')}</tr>
 <tr><td class="label" colspan="2">Refrigerant type</td><td class="unit">—</td>${items.map(()=>'<td>R410A</td>').join('')}</tr>
-<tr><td class="label" colspan="2">Refrigerant charge</td><td class="unit">kg</td>${c('charge','refrigerant_charge_kg')}</tr>
-<tr><td class="label" colspan="2">Max. Number of<br>Connectable IDUs</td><td class="unit">unit</td>${c('max_idu','max_connectable_idu')}</tr>
-<tr><td class="label" colspan="2">Gas pipe</td><td class="unit">mm</td>${c('gas','gas_pipe_mm')}</tr>
-<tr><td class="label" colspan="2">Liquid pipe</td><td class="unit">mm</td>${c('liquid','liquid_pipe_mm')}</tr>
-<tr><td class="label" colspan="2">Net weight</td><td class="unit">kg</td>${c('net','net_weight_kg')}</tr>
-<tr><td class="label" colspan="2">Gross weight</td><td class="unit">kg</td>${c('gross','gross_weight_kg')}</tr>
+<tr><td class="label" colspan="2">Refrigerant charge</td><td class="unit">kg</td>${c('charge')}</tr>
+<tr><td class="label" colspan="2">Max. Number of<br>Connectable IDUs</td><td class="unit">unit</td>${c('max_idu')}</tr>
+<tr><td class="label" colspan="2">Gas pipe</td><td class="unit">mm</td>${c('gas')}</tr>
+<tr><td class="label" colspan="2">Liquid pipe</td><td class="unit">mm</td>${c('liquid')}</tr>
+<tr><td class="label" colspan="2">Net weight</td><td class="unit">kg</td>${c('net')}</tr>
+<tr><td class="label" colspan="2">Gross weight</td><td class="unit">kg</td>${c('gross')}</tr>
 </tbody></table></div>`}
 
 // LOAD DATA FROM JSON
