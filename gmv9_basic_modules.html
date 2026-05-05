@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GMV9 Flex Basic Modules</title>
+  <style>
+    :root{--blue:#0089c8;--blue2:#006fad;--light:#e9f6fb;--line:#6bb8d6;--grid:#2f2f2f;--text:#444;--max:1500px}
+    *{box-sizing:border-box}body{margin:0;background:#dfe6eb;font-family:Arial,Helvetica,sans-serif;color:var(--text)}
+    .page{width:min(var(--max),100%);min-height:100vh;margin:0 auto;background:white;padding:clamp(14px,3vw,28px) clamp(14px,4vw,52px) 32px;box-shadow:0 8px 28px rgba(0,0,0,.18);overflow:hidden}.top{display:flex;justify-content:space-between;font-size:15px;color:#333;margin-bottom:22px}.page-no{font-size:12px;font-weight:700;color:#666}.page-no b{font-size:11px;color:#aaa;margin-right:6px}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.nav a{text-decoration:none;background:#eaf6fb;color:#006fad;border:1px solid #b9e1ef;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}.nav a.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .headline{font-size:clamp(26px,2.45vw,40px);font-weight:800;color:var(--blue);border-bottom:3px solid var(--blue);padding-bottom:6px;line-height:1.05}.bar{margin-top:10px;background:linear-gradient(90deg,var(--blue2),var(--blue));color:white;font-weight:800;font-size:clamp(14px,1.12vw,17px);padding:8px 14px}.intro{font-size:13px;line-height:1.35;max-width:980px;margin:14px 0 20px;color:#4d5960}.table-title{background:var(--blue);color:#fff;font-size:clamp(15px,1.15vw,18px);font-weight:800;padding:8px 12px;margin:22px 0 8px}.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:22px}.table-wrap::-webkit-scrollbar{height:8px}.table-wrap::-webkit-scrollbar-thumb{background:#9ccfe3;border-radius:99px}
+    .manual-spec{min-width:1040px;table-layout:fixed;border-collapse:collapse;border:1px solid var(--grid);font-size:12px;color:#111;background:white}.manual-spec th,.manual-spec td{border:1px solid var(--grid);padding:5px;text-align:center;vertical-align:middle;line-height:1.15}.manual-spec th{background:#d9d9d9;font-weight:700}.manual-spec td.group,.manual-spec td.label,.manual-spec td.unit{background:#d9d9d9;color:#111}.manual-spec td.group{font-weight:500;width:82px}.manual-spec td.label{font-weight:500;width:92px}.manual-spec td.unit{width:48px}.manual-spec td.model{font-weight:700;font-size:12px}.manual-spec .small{font-size:9px;display:block;margin-top:2px}.blank{background:#d9d9d9}.note{font-size:10px;line-height:1.3;color:#555;margin-top:8px}
+    .contact-btn{position:fixed;right:18px;bottom:18px;z-index:20;border:0;border-radius:999px;background:linear-gradient(135deg,var(--blue),#00a6d6);color:#fff;font-size:13px;font-weight:800;padding:12px 16px;box-shadow:0 14px 32px rgba(0,84,130,.28);cursor:pointer}.modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(5,31,48,.46);backdrop-filter:blur(4px);padding:18px}.modal.open{display:flex}.contact-card{width:min(460px,100%);background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.26)}.contact-top{background:linear-gradient(135deg,var(--blue2),#00a7d8);color:white;padding:22px 24px;position:relative}.contact-top h2{margin:0;font-size:25px}.contact-top p{margin:7px 0 0;font-size:13px;opacity:.92}.close{position:absolute;right:16px;top:14px;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:white;font-size:22px;cursor:pointer}.contact-body{padding:20px 24px 24px}.contact-line{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid #edf4f7}.contact-icon{width:36px;height:36px;border-radius:50%;background:#eaf6fb;color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:900}.contact-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7b8c94;font-weight:800}.contact-value{font-size:15px;color:#263840;font-weight:800;margin-top:2px}.contact-sub{font-size:12px;color:#6d7b82;margin-top:2px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.actions a{text-decoration:none;text-align:center;border-radius:12px;padding:11px 12px;font-weight:800;font-size:13px}.primary{background:var(--blue);color:white}.secondary{background:#eaf6fb;color:var(--blue)}
+    @media(max-width:760px){body{background:white}.page{box-shadow:none;padding:14px 12px 22px;overflow:visible}.table-wrap{border:1px solid #cfe9f3;border-radius:8px}.manual-spec{min-width:1000px;font-size:11px}.actions{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main class="page">
+  <div class="top"><div>CAC</div><div class="page-no"><b>FILE</b>BASIC MODULES</div></div>
+  <nav class="nav"><a href="gmv9_overview.html">Overview</a><a class="active" href="#">Basic Modules</a><a href="gmv9_combined_modules.html">Combined Modules</a><a href="#contact" onclick="openContact();return false;">Contact</a></nav>
+  <div class="headline">GMV9 Flex Basic Modules</div>
+  <div class="bar">Bảng thông số theo format Service Manual — 14HP đến 22HP</div>
+  <p class="intro">Bảng dưới đây giữ logic đọc quen thuộc của Sales: model nằm ngang, nhóm thông số đi dọc. Các thuật ngữ kỹ thuật như Cooling, Heating, EER, COP, Power Input, IDU, Gas Pipe, Liquid Pipe được giữ tiếng Anh để đồng bộ với tài liệu kỹ thuật và cách thị trường đang dùng.</p>
+  <div class="table-title">Basic Modules — Full Specification</div>
+  <div id="basicTable"></div>
+  <div class="note"><b>Ghi chú:</b><br>1. Cooling capacity at 35°C: indoor 27°CDB / 19°CWB, outdoor 35°CDB, pipe length 7.5m, no height drop.<br>2. Cooling capacity at 46°C: indoor 29°CDB / 19°CWB, outdoor 46°CDB, pipe length 7.5m, no height drop.<br>3. Heating capacity: indoor 20°CDB, outdoor 7°CDB / 6°CWB, pipe length 7.5m, no height drop.<br>4. Connected indoor unit capacity ratio: 50%–135% of outdoor unit capacity. Final data follows product nameplate and official technical documents.</div>
+</main>
+<button class="contact-btn" onclick="openContact()">Liên hệ</button>
+<div class="modal" id="contactModal" onclick="closeOnBackdrop(event)"><div class="contact-card"><div class="contact-top"><button class="close" onclick="closeContact()">×</button><h2>Liên hệ Gree Việt Nam</h2><p>Tư vấn dự án, tài liệu kỹ thuật và hỗ trợ thương mại.</p></div><div class="contact-body"><div class="contact-line"><div class="contact-icon">☎</div><div><div class="contact-label">Hotline</div><div class="contact-value">1900 1234</div><div class="contact-sub">Thứ 2–Thứ 6, 08:00–17:30</div></div></div><div class="contact-line"><div class="contact-icon">✉</div><div><div class="contact-label">Email</div><div class="contact-value">project@gree.com.vn</div><div class="contact-sub">Dành cho yêu cầu dự án CAC / VRF</div></div></div><div class="actions"><a class="primary" href="mailto:project@gree.com.vn">Gửi email</a><a class="secondary" href="tel:19001234">Gọi hotline</a></div></div></div></div>
+<script>
+const items=[
+{model:'GMV-400WML/A-X(D)',hp:'14',cool35_kw:'40.0',cool35_btuh:'136000',cool35_input:'10.20',eer:'3.92',cool46_kw:'35.0',cool46_btuh:'119000',cool46_input:'11.50',eer46:'3.04',heat_kw:'45.0',heat_btuh:'154000',heat_input:'9.60',cop:'4.69',max_input:'17.80',mca:'31.5',fuse:'32',air:'19000',sound:'59',charge:'7.0',max_idu:'23',gas:'Φ25.4',liquid:'Φ12.7',net:'210',gross:'230'},
+{model:'GMV-450WML/A-X(D)',hp:'16',cool35_kw:'45.0',cool35_btuh:'154000',cool35_input:'10.60',eer:'4.25',cool46_kw:'38.0',cool46_btuh:'130000',cool46_input:'11.00',eer46:'3.45',heat_kw:'50.0',heat_btuh:'170000',heat_input:'10.90',cop:'4.59',max_input:'20.40',mca:'34.4',fuse:'40',air:'19000',sound:'60',charge:'7.0',max_idu:'26',gas:'Φ28.6',liquid:'Φ12.7',net:'210',gross:'230'},
+{model:'GMV-504WML/A-X(D)',hp:'18',cool35_kw:'50.4',cool35_btuh:'170000',cool35_input:'11.80',eer:'4.27',cool46_kw:'38.5',cool46_btuh:'131000',cool46_input:'10.30',eer46:'3.74',heat_kw:'56.5',heat_btuh:'192000',heat_input:'12.50',cop:'4.52',max_input:'22.00',mca:'38.0',fuse:'40',air:'19500',sound:'60',charge:'8.0',max_idu:'29',gas:'Φ28.6',liquid:'Φ15.9',net:'235',gross:'255'},
+{model:'GMV-560WML/A-X(D)',hp:'20',cool35_kw:'56.0',cool35_btuh:'191000',cool35_input:'14.60',eer:'3.84',cool46_kw:'46.5',cool46_btuh:'158000',cool46_input:'14.00',eer46:'3.32',heat_kw:'63.0',heat_btuh:'215000',heat_input:'13.20',cop:'4.77',max_input:'23.70',mca:'40.0',fuse:'50',air:'19500',sound:'61',charge:'8.0',max_idu:'33',gas:'Φ28.6',liquid:'Φ15.9',net:'235',gross:'255'},
+{model:'GMV-615WML/A-X(D)',hp:'22',cool35_kw:'61.5',cool35_btuh:'210000',cool35_input:'17.00',eer:'3.62',cool46_kw:'47.0',cool46_btuh:'160000',cool46_input:'13.50',eer46:'3.48',heat_kw:'69.0',heat_btuh:'235000',heat_input:'16.00',cop:'4.31',max_input:'26.00',mca:'44.0',fuse:'50',air:'19500',sound:'61',charge:'8.0',max_idu:'36',gas:'Φ28.6',liquid:'Φ15.9',net:'235',gross:'255'}];
+function cells(k){return items.map(x=>`<td>${x[k]||'—'}</td>`).join('')}
+function render(){document.getElementById('basicTable').innerHTML=`<div class="table-wrap"><table class="manual-spec"><tbody>
+<tr><th colspan="3">Model (single unit)</th>${items.map(x=>`<td class="model">${x.model}</td>`).join('')}</tr>
+<tr><td class="label" colspan="2">Capacity range</td><td class="unit">HP</td>${cells('hp')}</tr>
+<tr><td class="group" rowspan="3">Cooling<br>at 35°C<span class="small">(1)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${cells('cool35_kw')}</tr>
+<tr><td class="unit">Btu/h</td>${cells('cool35_btuh')}</tr>
+<tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${cells('cool35_input')}</tr>
+<tr><td class="group">EER</td><td class="label">—</td><td class="unit">W/W</td>${cells('eer')}</tr>
+<tr><td class="group" rowspan="3">Cooling<br>at 46°C<span class="small">(2)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${cells('cool46_kw')}</tr>
+<tr><td class="unit">Btu/h</td>${cells('cool46_btuh')}</tr>
+<tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${cells('cool46_input')}</tr>
+<tr><td class="group">EER</td><td class="label">—</td><td class="unit">W/W</td>${cells('eer46')}</tr>
+<tr><td class="group" rowspan="3">Heating<span class="small">(3)</span></td><td class="label" rowspan="2">Capacity</td><td class="unit">kW</td>${cells('heat_kw')}</tr>
+<tr><td class="unit">Btu/h</td>${cells('heat_btuh')}</tr>
+<tr><td class="label">Power<br>Input</td><td class="unit">kW</td>${cells('heat_input')}</tr>
+<tr><td class="group">COP</td><td class="label">—</td><td class="unit">W/W</td>${cells('cop')}</tr>
+<tr><td class="label" colspan="2">Maximum power input</td><td class="unit">kW</td>${cells('max_input')}</tr>
+<tr><td class="label" colspan="2">Minimum circuit current</td><td class="unit">A</td>${cells('mca')}</tr>
+<tr><td class="label" colspan="2">Maximum fuse current</td><td class="unit">A</td>${cells('fuse')}</tr>
+<tr><td class="label" colspan="2">Power supply</td><td class="unit">—</td>${items.map(()=>'<td>380-415V 3N~<br>50/60Hz</td>').join('')}</tr>
+<tr><td class="label" colspan="2">Air volume</td><td class="unit">m³/h</td>${cells('air')}</tr>
+<tr><td class="label" colspan="2">Outdoor static pressure</td><td class="unit">Pa</td>${items.map(()=>'<td>0~40</td>').join('')}</tr>
+<tr><td class="label" colspan="2">Sound pressure level</td><td class="unit">dB(A)</td>${cells('sound')}</tr>
+<tr><td class="label" colspan="2">Compressor type</td><td class="unit">—</td>${items.map(()=>'<td>Inverter scroll</td>').join('')}</tr>
+<tr><td class="label" colspan="2">Refrigerant type</td><td class="unit">—</td>${items.map(()=>'<td>R410A</td>').join('')}</tr>
+<tr><td class="label" colspan="2">Refrigerant charge</td><td class="unit">kg</td>${cells('charge')}</tr>
+<tr><td class="label" colspan="2">Max. Number of<br>Connectable IDUs</td><td class="unit">unit</td>${cells('max_idu')}</tr>
+<tr><td class="label" colspan="2">Gas pipe</td><td class="unit">mm</td>${cells('gas')}</tr>
+<tr><td class="label" colspan="2">Liquid pipe</td><td class="unit">mm</td>${cells('liquid')}</tr>
+<tr><td class="label" colspan="2">Outline dimensions<br>(W×D×H)</td><td class="unit">mm</td>${items.map(()=>'<td>1250×460×1745</td>').join('')}</tr>
+<tr><td class="label" colspan="2">Packing dimensions<br>(W×D×H)</td><td class="unit">mm</td>${items.map(()=>'<td>1348×593×1915</td>').join('')}</tr>
+<tr><td class="label" colspan="2">Net weight</td><td class="unit">kg</td>${cells('net')}</tr>
+<tr><td class="label" colspan="2">Gross weight</td><td class="unit">kg</td>${cells('gross')}</tr>
+</tbody></table></div>`}
+function openContact(){document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden'}function closeContact(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow=''}function closeOnBackdrop(e){if(e.target.id==='contactModal')closeContact()}window.addEventListener('keydown',e=>{if(e.key==='Escape')closeContact()});render();
+</script>
+</body>
+</html>
